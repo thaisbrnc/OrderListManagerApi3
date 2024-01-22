@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6mCxEsurQO2ROrv4FzG7jx+HiFtRiyZxmw/832IPwT4nIsNmaRqOMPuqdmTDjCSM0GeK/kOKOvPMcvr33YsZlA==",
+  "success": true,
+  "projectFilePath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "/Users/thaisbranco/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
+    "/Users/thaisbranco/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

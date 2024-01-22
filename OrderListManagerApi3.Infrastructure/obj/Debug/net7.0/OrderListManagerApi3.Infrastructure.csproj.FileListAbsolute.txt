@@ -1,0 +1,17 @@
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Infrastructure.deps.json
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Infrastructure.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Infrastructure.pdb
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Models.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Translate.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Translate.pdb
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/bin/Debug/net7.0/OrderListManagerApi3.Models.pdb
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.csproj.AssemblyReference.cache
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.AssemblyInfoInputs.cache
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.AssemblyInfo.cs
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.csproj.CopyComplete
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/refint/OrderListManagerApi3.Infrastructure.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/OrderListManagerApi3.Infrastructure.pdb
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/Debug/net7.0/ref/OrderListManagerApi3.Infrastructure.dll

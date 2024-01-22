@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{366A2BBC-5C52-464A-BFFA-C2D23FDF3F36}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OrderListManagerApi3.Models/Database.cs">
+    <Files>
+      <File FileName="OrderListManagerApi3.Infrastructure/Repository/GroupRepository.cs" />
+      <File FileName="OrderListManagerApi3.Infrastructure/Repository/ProductRepository.cs" />
+      <File FileName="OrderListManagerApi3.Models/Database.cs" Line="3" Column="18" />
+      <File FileName="OrderListManagerApi3/Controllers/OrderListController.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="OrderListManagerApi3" expanded="True">
+            <Node name="OrderListManagerApi3" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+            <Node name="OrderListManagerApi3.Infrastructure" expanded="True">
+              <Node name="Repository" expanded="True" />
+            </Node>
+            <Node name="OrderListManagerApi3.Models" expanded="True">
+              <Node name="Database.cs" selected="True" />
+            </Node>
+            <Node name="OrderListManagerApi3.Services" expanded="True" />
+            <Node name="OrderListManagerApi3.Translate" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.OrderListManagerApi3 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+</Properties>

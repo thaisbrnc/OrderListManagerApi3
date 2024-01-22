@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/OrderListManagerApi3.props" />
+</Project>
