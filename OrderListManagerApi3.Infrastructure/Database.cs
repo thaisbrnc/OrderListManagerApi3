@@ -1,14 +1,15 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml;
+using OrderListManagerApi3.Models;
 
-namespace OrderListManagerApi3.Models
+namespace OrderListManagerApi3.Infrastructure
 {
-	public static class Database
+	public class Database
 	{
-		public static List<Group> groups = new List<Group>();
+		public List<Group> groups = new List<Group>();
 
-        public static void Serialize()
+        public void Serialize()
         {
             string fileName = "Database.json";
             var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true };
@@ -16,7 +17,7 @@ namespace OrderListManagerApi3.Models
             File.WriteAllText(fileName, dataSerialize);
         }
 
-        public static void Deserialize()
+        public void Deserialize()
         {
             string fileName = "Database.json";
             string jsonString = File.ReadAllText(fileName);

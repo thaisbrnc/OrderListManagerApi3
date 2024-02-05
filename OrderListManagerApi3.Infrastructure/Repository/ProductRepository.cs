@@ -8,19 +8,21 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 	public class ProductRepository
 	{
         private readonly ITranslator<Product, ProductDto> _translator;
+        private readonly Database _database;
         private GroupRepository _groupRepository;
         private ITranslator<Group, GroupDto> _translatorGroup;
 
-        public ProductRepository(ITranslator<Product, ProductDto> translator)
+        public ProductRepository(ITranslator<Product, ProductDto> translator, Database database)
         {
             _translator = translator;
+            _database = database;
         }
 
         public string Add(ProductDto productDto, string groupDto)
         {
             _translatorGroup = new GroupDto();
 
-            var group = Database.groups.FirstOrDefault(p => p.Description.ToLower() == groupDto.ToLower());
+            var group = _database.groups.FirstOrDefault(p => p.Description.ToLower() == groupDto.ToLower());
 
             if (group is not null)
             {
@@ -32,10 +34,10 @@ namespace OrderListManagerApi3.Infrastructure.Repository
                 }
                 else
                 {
-                    int index = Database.groups.IndexOf(group);
-                    Database.groups[index].products.Add(_translator.ToEntity(productDto));
+                    int index = _database.groups.IndexOf(group);
+                    _database.groups[index].products.Add(_translator.ToEntity(productDto));
 
-                    Database.Serialize();
+                    _database.Serialize();
 
                     return "Produto '" + group.products.Last().Description + "' cadastrado com sucesso.";
                     
@@ -49,7 +51,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public ProductDto Edit(string group, ProductDto productDto, string description)
         {
-            var gr = Database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
@@ -57,14 +59,14 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
             gr.products[index].Description = description;
 
-            Database.Serialize();
+            _database.Serialize();
 
             return _translator.ToDto(gr.products[index]);
         }
 
         public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
         { 
-            var gr = Database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
@@ -72,7 +74,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
             gr.products[index].IsChecked = isChecked;
 
-            Database.Serialize();
+            _database.Serialize();
 
             return _translator.ToDto(gr.products[index]);
             
@@ -80,7 +82,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public string Remove(string group, ProductDto productDto)
         {
-            var gr = Database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
@@ -88,7 +90,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             {
                 gr.products.Remove(product);
 
-                Database.Serialize();
+                _database.Serialize();
 
                 return "Produto '" + product.Description + "' removido com sucesso.";
             }
@@ -103,7 +105,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
         {
             var productDtoList = new List<ProductDto>();
 
-            _groupRepository = new GroupRepository(new GroupDto());
+            _groupRepository = new GroupRepository(new GroupDto(), _database);
 
             var groupsDto = _groupRepository.Get();
 

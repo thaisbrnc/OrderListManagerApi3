@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Zj2LmUoqRQIpyLvZ37TQzmUjIx53Y2s5juTWMmxgZTrLxEiba8ZQAg5JFFk32TUqUM01DrR7V0YVRqB40I+SqA==",
+  "dgSpecHash": "bUKt/YNwvli52lRGFZ34PJcYR1izUAeWXShHH9MmODlmKGMFyEkBK+pu4WkZIdJd3Yv8Lzxf5/Q4DynccdyCJg==",
   "success": true,
   "projectFilePath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3/OrderListManagerApi3.csproj",
   "expectedPackageFiles": [
     "/Users/thaisbranco/.nuget/packages/microsoft.aspnetcore.openapi/7.0.12/microsoft.aspnetcore.openapi.7.0.12.nupkg.sha512",
     "/Users/thaisbranco/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/thaisbranco/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/thaisbranco/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/thaisbranco/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
     "/Users/thaisbranco/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/thaisbranco/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",

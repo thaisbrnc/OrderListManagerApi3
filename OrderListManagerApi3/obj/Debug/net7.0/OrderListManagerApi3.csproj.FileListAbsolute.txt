@@ -43,3 +43,5 @@
 /Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3/bin/Debug/net7.0/System.Text.Encodings.Web.dll
 /Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3/bin/Debug/net7.0/System.Text.Json.dll
 /Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3/bin/Debug/net7.0/runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll

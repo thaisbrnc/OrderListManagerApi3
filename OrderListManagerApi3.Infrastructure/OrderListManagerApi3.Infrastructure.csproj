@@ -16,4 +16,7 @@
     <ProjectReference Include="..\OrderListManagerApi3.Translate\OrderListManagerApi3.Translate.csproj" />
     <ProjectReference Include="..\OrderListManagerApi3.Models\OrderListManagerApi3.Models.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
 </Project>

@@ -2,19 +2,10 @@
   {
     "products": [
       {
-        "IsChecked": true,
-        "Description": "Desinfetante"
-      }
-    ],
-    "Description": "Limpeza"
-  },
-  {
-    "products": [
-      {
         "IsChecked": false,
-        "Description": "Alface"
+        "Description": "Sabonete"
       }
     ],
-    "Description": "Verduras"
+    "Description": "Higiene"
   }
 ]

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderListManagerApi3.Models
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderListManagerApi3.Services", "OrderListManagerApi3.Service\OrderListManagerApi3.Services.csproj", "{20EB5F4F-A425-4D8C-BA1A-E9DDEE7BCCFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderListManagerApi3.Infrastructure.Tests", "OrderListManagerApi3.Infrastructure.Tests\OrderListManagerApi3.Infrastructure.Tests.csproj", "{832949FE-6D96-4B54-8D82-81C247054617}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{20EB5F4F-A425-4D8C-BA1A-E9DDEE7BCCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20EB5F4F-A425-4D8C-BA1A-E9DDEE7BCCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20EB5F4F-A425-4D8C-BA1A-E9DDEE7BCCFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{832949FE-6D96-4B54-8D82-81C247054617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832949FE-6D96-4B54-8D82-81C247054617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832949FE-6D96-4B54-8D82-81C247054617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832949FE-6D96-4B54-8D82-81C247054617}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

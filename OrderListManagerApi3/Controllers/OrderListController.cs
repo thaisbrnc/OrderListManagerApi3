@@ -2,6 +2,7 @@
 using OrderListManagerApi3.Services;
 using OrderListManagerApi3.Infrastructure.Repository;
 using Microsoft.AspNetCore.Mvc;
+using OrderListManagerApi3.Infrastructure;
 
 namespace OrderListManagerApi3.Controllers
 {
@@ -10,60 +11,63 @@ namespace OrderListManagerApi3.Controllers
     public class OrderListController : ControllerBase
     {
         private readonly ILogger<OrderListController> _logger;
+        private readonly Database _database;
         private ProductService _serviceProduct;
         private GroupService _serviceGroup;
+        
 
-        public OrderListController(ILogger<OrderListController> logger)
+        public OrderListController(ILogger<OrderListController> logger, Database database)
         {
             _logger = logger;
+            _database = database;
         }
 
         [HttpPut(Name = "AdicionarGrupo")]
         public string AddGroup(string name)
         {
-            _serviceGroup = new GroupService(new GroupRepository(new GroupDto()));
+            _serviceGroup = new GroupService(new GroupRepository(new GroupDto(), _database));
             return _serviceGroup.Add(name);
         }
 
         [HttpPost(Name = "AdicionarProduto")]
         public string AddProduct(ProductDto productDto, string group)
         {
-            _serviceProduct = new ProductService(new ProductRepository(new ProductDto()));
+            _serviceProduct = new ProductService(new ProductRepository(new ProductDto(), _database));
             return _serviceProduct.Add(productDto, group);
         }
 
         [HttpGet(Name = "BuscarLista")]
         public List<GroupDto> GetOrderList()
         {
-            _serviceGroup = new GroupService(new GroupRepository(new GroupDto()));
+            _serviceGroup = new GroupService(new GroupRepository(new GroupDto(), _database));
             return _serviceGroup.Get();
         }
 
         [HttpPatch(Name = "AtualizarNomeGrupo")]
         public GroupDto EditGroup(string group, string description)
         {
-            _serviceGroup = new GroupService(new GroupRepository(new GroupDto()));
+            _serviceGroup = new GroupService(new GroupRepository(new GroupDto(), _database));
             return _serviceGroup.Edit(group, description);
         }
 
         [HttpPatch(Name = "AtualizarNomeProduto")]
         public ProductDto EditProduct(string group, ProductDto productDto, string description)
         {
-            _serviceProduct = new ProductService(new ProductRepository(new ProductDto()));
+            _serviceProduct = new ProductService(new ProductRepository(new ProductDto(), _database));
             return _serviceProduct.Edit(group, productDto, description);
         }
 
         [HttpPatch(Name = "AtualizarSeleção")]
         public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
         {
-            _serviceProduct = new ProductService(new ProductRepository(new ProductDto()));
+            _serviceProduct = new ProductService(new ProductRepository(new ProductDto(), _database));
             return _serviceProduct.UpdateChecked(group, productDto, isChecked);
         }
 
         [HttpDelete(Name = "RemoverProduto")]
         public string RemoveProduct(string group, ProductDto product)
         {
-            _serviceProduct = new ProductService(new ProductRepository(new ProductDto()));
+            _serviceProduct = new ProductService(new ProductRepository(new ProductDto(), _database));
             return _serviceProduct.Remove(group, product);
         }
     }

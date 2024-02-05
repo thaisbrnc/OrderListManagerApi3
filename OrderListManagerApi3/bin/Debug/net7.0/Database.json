@@ -3,13 +3,9 @@
     "products": [
       {
         "IsChecked": false,
-        "Description": "Desinfetante"
+        "Description": "Sabonete"
       }
     ],
-    "Description": "Limpeza"
-  },
-  {
-    "products": [],
-    "Description": "Verduras"
+    "Description": "Higiene"
   }
 ]

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "sVzhaC20Y51l0qvfZXqIyQMJndDewGlEpo4KaNUNb3tgDDwH310EoX/ZFKF0avE5PM9cNoRMGNDCSMsIEy0Hcw==",
+  "dgSpecHash": "pTLnqjAdzBkAOpvP5f9uyYtmQh2evB5QLQWFvofkaA1KS/1SBwLKSOWyFCufMA1/6ejxsuDuvUb2vbsor+GDRA==",
   "success": true,
   "projectFilePath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Service/OrderListManagerApi3.Services.csproj",
   "expectedPackageFiles": [
+    "/Users/thaisbranco/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/thaisbranco/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/thaisbranco/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/Users/thaisbranco/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
   ],
