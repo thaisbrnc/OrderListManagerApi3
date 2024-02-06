@@ -1,37 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure.Tests/OrderListManagerApi3.Infrastructure.Tests.csproj": {}
+    "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure.Tests\\OrderListManagerApi3.Infrastructure.Tests.csproj": {}
   },
   "projects": {
-    "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure.Tests/OrderListManagerApi3.Infrastructure.Tests.csproj": {
+    "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure.Tests\\OrderListManagerApi3.Infrastructure.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure.Tests/OrderListManagerApi3.Infrastructure.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure.Tests\\OrderListManagerApi3.Infrastructure.Tests.csproj",
         "projectName": "OrderListManagerApi3.Infrastructure.Tests",
-        "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure.Tests/OrderListManagerApi3.Infrastructure.Tests.csproj",
-        "packagesPath": "/Users/thaisbranco/.nuget/packages/",
-        "outputPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure.Tests/obj/",
+        "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure.Tests\\OrderListManagerApi3.Infrastructure.Tests.csproj",
+        "packagesPath": "C:\\Users\\dougl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thaisbranco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\dougl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj": {
-                "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj"
+              "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\OrderListManagerApi3.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\OrderListManagerApi3.Infrastructure.csproj"
               },
-              "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj": {
-                "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj"
+              "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj": {
+                "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj"
               }
             }
           }
@@ -87,38 +88,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj": {
+    "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\OrderListManagerApi3.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\OrderListManagerApi3.Infrastructure.csproj",
         "projectName": "OrderListManagerApi3.Infrastructure",
-        "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj",
-        "packagesPath": "/Users/thaisbranco/.nuget/packages/",
-        "outputPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/obj/",
+        "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\OrderListManagerApi3.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\dougl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thaisbranco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\dougl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj": {
-                "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj"
+              "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj": {
+                "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj"
               },
-              "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj": {
-                "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj"
+              "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj": {
+                "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj"
               }
             }
           }
@@ -154,27 +156,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj": {
+    "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj",
+        "projectUniqueName": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj",
         "projectName": "OrderListManagerApi3.Models",
-        "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj",
-        "packagesPath": "/Users/thaisbranco/.nuget/packages/",
-        "outputPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/obj/",
+        "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj",
+        "packagesPath": "C:\\Users\\dougl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thaisbranco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\dougl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -214,35 +217,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj": {
+    "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj",
+        "projectUniqueName": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj",
         "projectName": "OrderListManagerApi3.Translate",
-        "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/OrderListManagerApi3.Translate.csproj",
-        "packagesPath": "/Users/thaisbranco/.nuget/packages/",
-        "outputPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Translate/obj/",
+        "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\OrderListManagerApi3.Translate.csproj",
+        "packagesPath": "C:\\Users\\dougl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Translate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/thaisbranco/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\dougl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj": {
-                "projectPath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj"
+              "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj": {
+                "projectPath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj"
               }
             }
           }
@@ -272,7 +276,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

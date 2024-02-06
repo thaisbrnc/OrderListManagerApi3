@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "03sAzE5bbcffHzOqdWC7CVpaLTQN5aWiJmyZz/1MobR6bbMvLb8q10km4Rv4KhScP85WpqcaefjiduzgClcfuQ==",
+  "dgSpecHash": "9Y64yF8ggEoGNqKuApMCJkgdq4derI1YcQrfZXgd9AErLWpc/79PGrEBT/H4ku6TAoa300m6aB90z6wUcUYdIA==",
   "success": true,
-  "projectFilePath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure/OrderListManagerApi3.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Infrastructure\\OrderListManagerApi3.Infrastructure.csproj",
   "expectedPackageFiles": [
-    "/Users/thaisbranco/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "/Users/thaisbranco/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "/Users/thaisbranco/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
-    "/Users/thaisbranco/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
+    "C:\\Users\\dougl\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\dougl\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\dougl\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\dougl\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

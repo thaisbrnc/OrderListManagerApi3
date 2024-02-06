@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "1BoFGERZpLxtvyY8axh0YUt4zAWHRCRHo2IjWFvenRN/y2ZSeCjZLJQRVvvXwbtAOM/fqvAWeVTW28mwt2Zvxg==",
+  "dgSpecHash": "NRxdeJ0lehdHuZAjzbN7XT4ceM8x3LPqJXC3RmYadSeGQMLau4tG22f3SRJJHOkvoGfezM7PbxCV+aXj+lJT/g==",
   "success": true,
-  "projectFilePath": "/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Models/OrderListManagerApi3.Models.csproj",
+  "projectFilePath": "C:\\Users\\dougl\\Source\\Repos\\thaisbrnc\\OrderListManagerApi3\\OrderListManagerApi3.Models\\OrderListManagerApi3.Models.csproj",
   "expectedPackageFiles": [
-    "/Users/thaisbranco/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
-    "/Users/thaisbranco/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512"
+    "C:\\Users\\dougl\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\dougl\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
