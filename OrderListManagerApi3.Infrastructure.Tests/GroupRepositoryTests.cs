@@ -5,11 +5,11 @@ using OrderListManagerApi3.Translate;
 
 namespace OrderListManagerApi3.Infrastructure.Tests;
 
-public class UnitTestGroupRepository
+public class GroupRepositoryTests
 {
     private readonly Mock<Database> _database = new Mock<Database>();
 
-    public UnitTestGroupRepository()
+    public GroupRepositoryTests()
     {
     }
 
