@@ -30,6 +30,14 @@ namespace OrderListManagerApi3.Services
             return _groupRepository.Edit(group, description);
         }
 
+        public string Remove(GroupDto groupDto)
+        {
+            if (groupDto is null)
+                throw new Exception("Dados inválidos.");
+
+            return _groupRepository.Remove(groupDto);
+        }
+
         public List<GroupDto> Get()
         {
             return _groupRepository.Get();

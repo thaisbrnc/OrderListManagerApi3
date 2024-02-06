@@ -16,6 +16,8 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
 		public string Add(string name)
 		{
+            _database.Deserialize();
+
             var gr = _database.groups.FirstOrDefault(p => p.Description.ToLower() == name.ToLower());
 
             if (gr is not null)
@@ -38,6 +40,8 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public GroupDto Edit(string group, string description)
         {
+            _database.Deserialize();
+
             var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             int index = _database.groups.IndexOf(gr);
@@ -47,6 +51,26 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             _database.Serialize();
 
             return _translator.ToDto(_database.groups[index]);
+        }
+
+        public string Remove(GroupDto groupDto)
+        {
+            _database.Deserialize();
+
+            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == groupDto.Description.ToLower());
+
+            if (gr is not null)
+            {
+                _database.groups.Remove(gr);
+
+                _database.Serialize();
+
+                return "Grupo '" + gr.Description + "' removido com sucesso.";
+            }
+            else
+            {
+                return "Não foi possível remover o grupo '" + gr.Description + "'.";
+            }
         }
 
         public List<GroupDto> Get()

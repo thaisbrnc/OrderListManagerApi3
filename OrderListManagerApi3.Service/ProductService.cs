@@ -13,12 +13,12 @@ namespace OrderListManagerApi3.Services
             _productRepository = productRepository;
         }
 
-        public string Add(ProductDto productDto, string groupDto)
+        public string Add(string productName, string groupName)
         {
-            if (string.IsNullOrEmpty(productDto.Name) || string.IsNullOrEmpty(groupDto))
+            if (string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(groupName))
                 throw new Exception("Dados inválidos.");
 
-            return _productRepository.Add(productDto, groupDto);
+            return _productRepository.Add(productName, groupName);
         }
 
         public ProductDto Edit(string group, ProductDto productDto, string description)

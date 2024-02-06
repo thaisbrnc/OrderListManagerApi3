@@ -18,15 +18,17 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             _database = database;
         }
 
-        public string Add(ProductDto productDto, string groupDto)
+        public string Add(string productName, string groupName)
         {
             _translatorGroup = new GroupDto();
 
-            var group = _database.groups.FirstOrDefault(p => p.Description.ToLower() == groupDto.ToLower());
+            _database.Deserialize();
+
+            var group = _database.groups.FirstOrDefault(g => g.Description.ToLower() == groupName.ToLower());
 
             if (group is not null)
             {
-                var prod = group.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
+                var prod = group.products.FirstOrDefault(p => p.Description.ToLower() == productName.ToLower());
 
                 if (prod is not null)
                 {
@@ -35,6 +37,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
                 else
                 {
                     int index = _database.groups.IndexOf(group);
+                    ProductDto productDto = new ProductDto() { Name = productName, IsChecked = false };
                     _database.groups[index].products.Add(_translator.ToEntity(productDto));
 
                     _database.Serialize();
@@ -45,12 +48,14 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             }
             else
             {
-                return "Não foi possível cadastrar o produto, pois o grupo '" + groupDto + "' não está registrado.";
+                return "Não foi possível cadastrar o produto, pois o grupo '" + groupName + "' não está registrado.";
             }
         }
 
         public ProductDto Edit(string group, ProductDto productDto, string description)
         {
+            _database.Deserialize();
+
             var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
@@ -65,7 +70,9 @@ namespace OrderListManagerApi3.Infrastructure.Repository
         }
 
         public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
-        { 
+        {
+            _database.Deserialize();
+
             var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
@@ -82,6 +89,8 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public string Remove(string group, ProductDto productDto)
         {
+            _database.Deserialize();
+
             var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());

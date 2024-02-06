@@ -30,10 +30,10 @@ namespace OrderListManagerApi3.Controllers
         }
 
         [HttpPost(Name = "AdicionarProduto")]
-        public string AddProduct(ProductDto productDto, string group)
+        public string AddProduct(string productName, string groupName)
         {
             _serviceProduct = new ProductService(new ProductRepository(new ProductDto(), _database));
-            return _serviceProduct.Add(productDto, group);
+            return _serviceProduct.Add(productName, groupName);
         }
 
         [HttpGet(Name = "BuscarLista")]
@@ -69,6 +69,13 @@ namespace OrderListManagerApi3.Controllers
         {
             _serviceProduct = new ProductService(new ProductRepository(new ProductDto(), _database));
             return _serviceProduct.Remove(group, product);
+        }
+
+        [HttpDelete(Name = "RemoverGrupo")]
+        public string RemoveGroup(GroupDto group)
+        {
+            _serviceGroup = new GroupService(new GroupRepository(new GroupDto(), _database));
+            return _serviceGroup.Remove(group);
         }
     }
 }

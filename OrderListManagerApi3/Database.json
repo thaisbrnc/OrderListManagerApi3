@@ -3,9 +3,13 @@
     "products": [
       {
         "IsChecked": false,
-        "Description": "Sabonete"
+        "Description": "Detergente"
+      },
+      {
+        "IsChecked": false,
+        "Description": "Alcool"
       }
     ],
-    "Description": "Higiene"
+    "Description": "Limpeza"
   }
 ]
