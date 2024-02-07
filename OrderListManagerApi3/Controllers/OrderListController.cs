@@ -11,12 +11,12 @@ namespace OrderListManagerApi3.Controllers
     public class OrderListController : ControllerBase
     {
         private readonly ILogger<OrderListController> _logger;
-        private readonly Database _database;
+        private readonly JsonLocalFileGenerator _database;
         private ProductService _serviceProduct;
         private GroupService _serviceGroup;
         
 
-        public OrderListController(ILogger<OrderListController> logger, Database database)
+        public OrderListController(ILogger<OrderListController> logger, JsonLocalFileGenerator database)
         {
             _logger = logger;
             _database = database;

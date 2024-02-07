@@ -5,15 +5,20 @@ using OrderListManagerApi3.Models;
 
 namespace OrderListManagerApi3.Infrastructure
 {
-	public class Database
+	public class JsonLocalFileGenerator : IJsonLocalFileGenerator
 	{
-		public List<Group> groups = new List<Group>();
+        private IList<Group> _groups;
+        public JsonLocalFileGenerator(IList<Group> groups)
+        {
+            _groups = groups;
+        }
+        
 
         public void Serialize()
         {
             string fileName = "Database.json";
             var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true };
-            string dataSerialize = JsonSerializer.Serialize(groups, options);
+            string dataSerialize = JsonSerializer.Serialize(_groups, options);
             File.WriteAllText(fileName, dataSerialize);
         }
 
@@ -22,7 +27,7 @@ namespace OrderListManagerApi3.Infrastructure
             string fileName = "Database.json";
             string jsonString = File.ReadAllText(fileName);
             var options = new JsonSerializerOptions { IncludeFields = true };
-            groups = JsonSerializer.Deserialize<List<Group>>(jsonString, options)!;
+            _groups = JsonSerializer.Deserialize<List<Group>>(jsonString, options)!;
             
         }
     }

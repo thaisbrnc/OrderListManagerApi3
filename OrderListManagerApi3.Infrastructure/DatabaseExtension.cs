@@ -8,7 +8,7 @@ namespace OrderListManagerApi3.Infrastructure
 	{ 
 		public static void AddDatabaseServices(this IServiceCollection service)
 		{
-			service.AddSingleton<Database>();
+			service.AddSingleton<JsonLocalFileGenerator>();
 		}
 	}
 }

@@ -8,23 +8,25 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 	public class ProductRepository
 	{
         private readonly ITranslator<Product, ProductDto> _translator;
-        private readonly Database _database;
+        private readonly IJsonLocalFileGenerator _fileJsonGenerator;
+        private readonly List<Group> _groups;
         private GroupRepository _groupRepository;
         private ITranslator<Group, GroupDto> _translatorGroup;
 
-        public ProductRepository(ITranslator<Product, ProductDto> translator, Database database)
+        public ProductRepository(ITranslator<Product, ProductDto> translator, IJsonLocalFileGenerator fileJsonGenerator, List<Group> groups)
         {
             _translator = translator;
-            _database = database;
+            _fileJsonGenerator = fileJsonGenerator;
+            _groups = groups;
         }
 
         public string Add(string productName, string groupName)
         {
             _translatorGroup = new GroupDto();
 
-            _database.Deserialize();
+            _fileJsonGenerator.Deserialize();
 
-            var group = _database.groups.FirstOrDefault(g => g.Description.ToLower() == groupName.ToLower());
+            var group = _groups.FirstOrDefault(g => g.Description.ToLower() == groupName.ToLower());
 
             if (group is not null)
             {
@@ -36,11 +38,11 @@ namespace OrderListManagerApi3.Infrastructure.Repository
                 }
                 else
                 {
-                    int index = _database.groups.IndexOf(group);
+                    int index = _groups.IndexOf(group);
                     ProductDto productDto = new ProductDto() { Name = productName, IsChecked = false };
-                    _database.groups[index].products.Add(_translator.ToEntity(productDto));
+                    _groups[index].products.Add(_translator.ToEntity(productDto));
 
-                    _database.Serialize();
+                    _fileJsonGenerator.Serialize();
 
                     return "Produto '" + group.products.Last().Description + "' cadastrado com sucesso.";
                     
@@ -54,9 +56,9 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public ProductDto Edit(string group, ProductDto productDto, string description)
         {
-            _database.Deserialize();
+            _fileJsonGenerator.Deserialize();
 
-            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
@@ -64,16 +66,16 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
             gr.products[index].Description = description;
 
-            _database.Serialize();
+            _fileJsonGenerator.Serialize();
 
             return _translator.ToDto(gr.products[index]);
         }
 
         public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
         {
-            _database.Deserialize();
+            _fileJsonGenerator.Deserialize();
 
-            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
@@ -81,7 +83,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
             gr.products[index].IsChecked = isChecked;
 
-            _database.Serialize();
+            _fileJsonGenerator.Serialize();
 
             return _translator.ToDto(gr.products[index]);
             
@@ -89,9 +91,9 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public string Remove(string group, ProductDto productDto)
         {
-            _database.Deserialize();
+            _fileJsonGenerator.Deserialize();
 
-            var gr = _database.groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
@@ -99,7 +101,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             {
                 gr.products.Remove(product);
 
-                _database.Serialize();
+                _fileJsonGenerator.Serialize();
 
                 return "Produto '" + product.Description + "' removido com sucesso.";
             }
@@ -114,7 +116,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
         {
             var productDtoList = new List<ProductDto>();
 
-            _groupRepository = new GroupRepository(new GroupDto(), _database);
+            _groupRepository = new GroupRepository(new GroupDto(), _fileJsonGenerator, _groups);
 
             var groupsDto = _groupRepository.Get();
 
