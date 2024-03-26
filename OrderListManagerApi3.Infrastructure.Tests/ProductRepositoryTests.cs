@@ -8,8 +8,8 @@ namespace OrderListManagerApi3.Infrastructure.Tests
 {
 	public class ProductRepositoryTests
 	{
-        private readonly Mock<Database> _database = new Mock<Database>();
-
+        private readonly Mock<IJsonLocalFileGenerator> _fileGeneratorMock;
+        private List<Group> _groups;
         public ProductRepositoryTests()
 		{
 		}
@@ -19,12 +19,13 @@ namespace OrderListManagerApi3.Infrastructure.Tests
         public void AddProductTest_ProdutoJaAdicionado_Failure(string productName, string groupName)
         {
             //arrange
-            ProductRepository productRepository = new ProductRepository(new ProductDto(), _database.Object);
+            
+            ProductRepository productRepository = new ProductRepository(new ProductDto(), _fileGeneratorMock.Object, _groups);
             Group group = new Group() { Description = groupName };
-            _database.Object.groups.Add(group);
+            _groups.Add(group);
 
             Product product = new Product() { Description = productName };
-            _database.Object.groups[0].products.Add(product);
+            _groups[0].products.Add(product);
 
 
             //act

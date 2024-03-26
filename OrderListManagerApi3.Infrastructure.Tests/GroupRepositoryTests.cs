@@ -7,10 +7,11 @@ namespace OrderListManagerApi3.Infrastructure.Tests;
 
 public class GroupRepositoryTests
 {
-    private readonly Mock<Database> _database = new Mock<Database>();
-
+    private readonly Mock<IJsonLocalFileGenerator> _fileGeneratorMock;
+    private List<Group> _groups;
     public GroupRepositoryTests()
     {
+        _fileGeneratorMock = new Mock<IJsonLocalFileGenerator>();
     }
 
     [Theory]
@@ -19,9 +20,14 @@ public class GroupRepositoryTests
     public void AddGroupTest_GrupoJaAdicionado_Failure(string name)
     {
         //arrange
-        GroupRepository groupRepository = new GroupRepository(new GroupDto(), _database.Object);
+        var json = _fileGeneratorMock.Object;
+        GroupRepository groupRepository = new GroupRepository(new GroupDto(), json, _groups);
         Group group = new Group() { Description = name };
-        _database.Object.groups.Add(group);
+        _groups.Add(group);
+
+        //setup
+        _fileGeneratorMock.Setup(j => j.Deserialize());
+        _fileGeneratorMock.Setup(j => j.Serialize());
 
         //act
         string retorno = groupRepository.Add(name);
@@ -36,7 +42,7 @@ public class GroupRepositoryTests
     public void AddGroupTest_GrupoAdicionadoComSucesso_Succes(string name)
     {
         //arrange
-        GroupRepository groupRepository = new GroupRepository(new GroupDto(), _database.Object);
+        GroupRepository groupRepository = new GroupRepository(new GroupDto(), _fileGeneratorMock.Object, _groups);
 
         //act
         string retorno = groupRepository.Add(name);
