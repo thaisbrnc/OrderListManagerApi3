@@ -20,7 +20,7 @@ namespace OrderListManagerApi3.Infrastructure.Tests
         {
             //arrange
             
-            ProductRepository productRepository = new ProductRepository(new ProductDto(), _fileGeneratorMock.Object, _groups);
+            ProductRepository productRepository = new ProductRepository(new ProductDto(), _fileGeneratorMock.Object);
             Group group = new Group() { Description = groupName };
             _groups.Add(group);
 

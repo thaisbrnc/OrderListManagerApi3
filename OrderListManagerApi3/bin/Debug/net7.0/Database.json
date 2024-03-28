@@ -3,9 +3,30 @@
     "products": [
       {
         "IsChecked": false,
-        "Description": "Detergente"
+        "Description": "Sabonete"
+      },
+      {
+        "IsChecked": true,
+        "Description": "Shampoo"
+      },
+      {
+        "IsChecked": true,
+        "Description": "Condicionador"
       }
     ],
-    "Description": "Limpeza"
+    "Description": "Higiene"
+  },
+  {
+    "products": [
+      {
+        "IsChecked": false,
+        "Description": "Bovina"
+      },
+      {
+        "IsChecked": true,
+        "Description": "Peixe"
+      }
+    ],
+    "Description": "Carnes"
   }
 ]

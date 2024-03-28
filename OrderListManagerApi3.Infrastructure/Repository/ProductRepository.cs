@@ -8,24 +8,18 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 	public class ProductRepository
 	{
         private readonly ITranslator<Product, ProductDto> _translator;
-        private readonly IJsonLocalFileGenerator _fileJsonGenerator;
-        private readonly List<Group> _groups;
-        private GroupRepository _groupRepository;
-        private ITranslator<Group, GroupDto> _translatorGroup;
+        private readonly IJsonLocalFileGenerator _jsonGenerator;
+        private readonly IList<Group> _groups;
 
-        public ProductRepository(ITranslator<Product, ProductDto> translator, IJsonLocalFileGenerator fileJsonGenerator, List<Group> groups)
+        public ProductRepository(ITranslator<Product, ProductDto> translator, IJsonLocalFileGenerator jsonGenerator)
         {
             _translator = translator;
-            _fileJsonGenerator = fileJsonGenerator;
-            _groups = groups;
+            _jsonGenerator = jsonGenerator;
+            _groups = _jsonGenerator.Deserialize();
         }
 
-        public string Add(string productName, string groupName)
+        public ProductDto Add(string productName, string groupName)
         {
-            _translatorGroup = new GroupDto();
-
-            _fileJsonGenerator.Deserialize();
-
             var group = _groups.FirstOrDefault(g => g.Description.ToLower() == groupName.ToLower());
 
             if (group is not null)
@@ -34,7 +28,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
                 if (prod is not null)
                 {
-                    return "Produto '" + prod.Description + "' já consta na lista.";
+                    throw new Exception("Produto '" + prod.Description + "' já consta na lista.");
                 }
                 else
                 {
@@ -42,39 +36,41 @@ namespace OrderListManagerApi3.Infrastructure.Repository
                     ProductDto productDto = new ProductDto() { Name = productName, IsChecked = false };
                     _groups[index].products.Add(_translator.ToEntity(productDto));
 
-                    _fileJsonGenerator.Serialize();
+                    _jsonGenerator.Serialize(_groups);
 
-                    return "Produto '" + group.products.Last().Description + "' cadastrado com sucesso.";
-                    
+                    return _translator.ToDto(group.products.Last());
                 }
             }
             else
             {
-                return "Não foi possível cadastrar o produto, pois o grupo '" + groupName + "' não está registrado.";
+                throw new Exception("Não foi possível cadastrar o produto, pois o grupo '" + groupName + "' não está registrado.");
             }
         }
 
         public ProductDto Edit(string group, ProductDto productDto, string description)
         {
-            _fileJsonGenerator.Deserialize();
-
             var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
-            var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
+            var searchDescription = gr.products.FirstOrDefault(p => p.Description.ToLower() == description.ToLower());
 
-            int index = gr.products.IndexOf(product);
+            if (searchDescription is not null)
+                throw new Exception("Produto '" + searchDescription + "' já consta na lista.");
+            else
+            {
+                var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
-            gr.products[index].Description = description;
+                int index = gr.products.IndexOf(product);
 
-            _fileJsonGenerator.Serialize();
+                gr.products[index].Description = description;
 
-            return _translator.ToDto(gr.products[index]);
+                _jsonGenerator.Serialize(_groups);
+
+                return _translator.ToDto(gr.products[index]);
+            }
         }
 
         public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
         {
-            _fileJsonGenerator.Deserialize();
-
             var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
@@ -83,16 +79,13 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
             gr.products[index].IsChecked = isChecked;
 
-            _fileJsonGenerator.Serialize();
+            _jsonGenerator.Serialize(_groups);
 
             return _translator.ToDto(gr.products[index]);
-            
         }
 
         public string Remove(string group, ProductDto productDto)
         {
-            _fileJsonGenerator.Deserialize();
-
             var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
             var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
@@ -101,34 +94,14 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             {
                 gr.products.Remove(product);
 
-                _fileJsonGenerator.Serialize();
+                _jsonGenerator.Serialize(_groups);
 
-                return "Produto '" + product.Description + "' removido com sucesso.";
+                return "Produto removido com sucesso.";
             }
             else
             {
-                return "Não foi possível remover o produto '" + product.Description + "'.";
+                throw new Exception("Não foi possível remover o produto '" + product.Description + "'.");
             }
-        }
-
-        //retorna todos os produtos, sem separaçao por grupo
-        public List<ProductDto> Get()
-        {
-            var productDtoList = new List<ProductDto>();
-
-            _groupRepository = new GroupRepository(new GroupDto(), _fileJsonGenerator, _groups);
-
-            var groupsDto = _groupRepository.Get();
-
-            foreach (GroupDto g in groupsDto)
-            {
-                foreach (ProductDto p in g.Products)
-                {
-                    productDtoList.Add(p);
-                }
-            }
-            return productDtoList;
         }
     }
 }
-

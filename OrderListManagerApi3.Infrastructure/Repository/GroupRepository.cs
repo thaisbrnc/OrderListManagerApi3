@@ -6,23 +6,22 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 	public class GroupRepository
 	{
 		private readonly ITranslator<Group, GroupDto> _translator;
-        private readonly IJsonLocalFileGenerator _fileJson;
-        private List<Group> _groups;
-		public GroupRepository(ITranslator<Group, GroupDto> translator, IJsonLocalFileGenerator fileJsonGenerator, List<Group> groups)
+        private readonly IJsonLocalFileGenerator _jsonGenerator;
+        private IList<Group> _groups;
+
+		public GroupRepository(ITranslator<Group, GroupDto> translator, IJsonLocalFileGenerator jsonGenerator)
 		{
 			_translator = translator;
-            _fileJson = fileJsonGenerator;
-            _groups = groups;
-		}
+            _jsonGenerator = jsonGenerator;
+            _groups = _jsonGenerator.Deserialize();
+        }
 
-		public string Add(string name)
+		public GroupDto Add(string name)
 		{
-            _fileJson.Deserialize();
-
             var gr = _groups.FirstOrDefault(p => p.Description.ToLower() == name.ToLower());
 
             if (gr is not null)
-                return "Grupo '" + gr.Description + "' já consta na lista.";
+                throw new Exception("Grupo '" + gr.Description + "' já consta na lista.");
             else
             {
                 var group = new GroupDto()
@@ -32,31 +31,37 @@ namespace OrderListManagerApi3.Infrastructure.Repository
                 };
 
                 _groups.Add(_translator.ToEntity(group));
+                _jsonGenerator.Serialize(_groups);
 
-                _fileJson.Serialize();
-
-                return "Grupo '" + group.Description + "' cadastrado com sucesso.";
+                return group;
             }
         }
 
         public GroupDto Edit(string group, string description)
         {
-            _fileJson.Deserialize();
+            //_jsonGenerator.Deserialize();
 
-            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            var searchDescription = _groups.FirstOrDefault(g => g.Description.ToLower() == description.ToLower());
 
-            int index = _groups.IndexOf(gr);
+            if (searchDescription is not null)
+                throw new Exception("Grupo '" + searchDescription + "' já consta na lista.");
+            else
+            {
+                var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
-            _groups[index].Description = description;
+                int index = _groups.IndexOf(gr);
 
-            _fileJson.Serialize();
+                _groups[index].Description = description;
 
-            return _translator.ToDto(_groups[index]);
+                _jsonGenerator.Serialize(_groups);
+
+                return _translator.ToDto(_groups[index]);
+            }
         }
 
         public string Remove(GroupDto groupDto)
         {
-            _fileJson.Deserialize();
+            //_jsonGenerator.Deserialize();
 
             var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == groupDto.Description.ToLower());
 
@@ -64,20 +69,18 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             {
                 _groups.Remove(gr);
 
-                _fileJson.Serialize();
+                _jsonGenerator.Serialize(_groups);
 
-                return "Grupo '" + gr.Description + "' removido com sucesso.";
+                return "Grupo removido com sucesso.";
             }
             else
             {
-                return "Não foi possível remover o grupo '" + gr.Description + "'.";
+                throw new Exception("Não foi possível remover o grupo '" + gr.Description + "'.");
             }
         }
 
         public List<GroupDto> Get()
         {
-            _fileJson.Deserialize();
-
             var groupsDto = new List<GroupDto>();
 
             foreach (Group g in _groups)
@@ -95,7 +98,7 @@ namespace OrderListManagerApi3.Infrastructure.Repository
                 throw new Exception();
             }
 
-            _fileJson.Deserialize();
+            //_jsonGenerator.Deserialize();
 
             var groupDto = _translator.ToDto(_groups.FirstOrDefault(g => g.Description.ToLower() == description.ToLower()));
 
@@ -103,4 +106,3 @@ namespace OrderListManagerApi3.Infrastructure.Repository
         }
     }
 }
-

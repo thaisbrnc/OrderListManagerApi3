@@ -1,4 +1,5 @@
-﻿using OrderListManagerApi3.Infrastructure;
+﻿using Microsoft.AspNetCore.Builder;
+using OrderListManagerApi3.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDatabaseServices();
+builder.Services.AddSingleton(typeof(IJsonLocalFileGenerator), typeof(JsonLocalFileGenerator));
 
 var app = builder.Build();
 
@@ -17,6 +19,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors();
 }
 
 app.UseHttpsRedirection();

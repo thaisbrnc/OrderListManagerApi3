@@ -1,9 +1,11 @@
-﻿namespace OrderListManagerApi3.Infrastructure
+﻿using OrderListManagerApi3.Models;
+
+namespace OrderListManagerApi3.Infrastructure
 {
     public interface IJsonLocalFileGenerator
     {
-        void Serialize();
+        void Serialize(IList<Group> groups);
 
-        void Deserialize();
+        IList<Group> Deserialize();
     }
 }

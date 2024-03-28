@@ -60,4 +60,3 @@ public class GroupDto : ITranslator<Group, GroupDto>
         return _group;
     }
 }
-
