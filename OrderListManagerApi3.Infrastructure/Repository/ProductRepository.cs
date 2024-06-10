@@ -2,6 +2,7 @@
 using OrderListManagerApi3.Models;
 using OrderListManagerApi3.Translate;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace OrderListManagerApi3.Infrastructure.Repository
 {
@@ -20,87 +21,116 @@ namespace OrderListManagerApi3.Infrastructure.Repository
 
         public ProductDto Add(string productName, string groupName)
         {
-            var group = _groups.FirstOrDefault(g => g.Description.ToLower() == groupName.ToLower());
-
-            if (group is not null)
+            try
             {
-                var prod = group.products.FirstOrDefault(p => p.Description.ToLower() == productName.ToLower());
-
-                if (prod is not null)
+                if (!string.IsNullOrEmpty(productName))
                 {
-                    throw new Exception("Produto '" + prod.Description + "' já consta na lista.");
+                    var group = _groups.FirstOrDefault(g => g.Description.ToLower() == groupName.ToLower());
+
+                    if (group != null)
+                    {
+                        var prod = group.products.FirstOrDefault(p => p.Description.ToLower() == productName.ToLower());
+
+                        if (prod == null)
+                        {
+                            int index = _groups.IndexOf(group);
+                            var productDto = new ProductDto() { Name = productName, IsChecked = false };
+                            _groups[index].products.Add(_translator.ToEntity(productDto));
+
+                            _jsonGenerator.Serialize(_groups);
+
+                            return _translator.ToDto(group.products.Last());
+                        }
+                        else
+                        {
+                            throw new Exception($"Produto '{prod.Description}' já consta na lista.");
+                        }
+                    }
+                    else
+                        throw new ArgumentNullException($"Não foi possível cadastrar o produto, pois o grupo '{groupName}' não está registrado.", innerException: null);
                 }
                 else
-                {
-                    int index = _groups.IndexOf(group);
-                    ProductDto productDto = new ProductDto() { Name = productName, IsChecked = false };
-                    _groups[index].products.Add(_translator.ToEntity(productDto));
-
-                    _jsonGenerator.Serialize(_groups);
-
-                    return _translator.ToDto(group.products.Last());
-                }
+                    throw new ArgumentNullException("Nome do produto não pode ser vazio.", innerException: null);
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception("Não foi possível cadastrar o produto, pois o grupo '" + groupName + "' não está registrado.");
+                throw new Exception($"Erro: {ex.Message}");
             }
         }
 
         public ProductDto Edit(string group, ProductDto productDto, string description)
         {
-            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
-
-            var searchDescription = gr.products.FirstOrDefault(p => p.Description.ToLower() == description.ToLower());
-
-            if (searchDescription is not null)
-                throw new Exception("Produto '" + searchDescription + "' já consta na lista.");
-            else
+            try
             {
-                var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
+                if (!string.IsNullOrEmpty(description))
+                {
+                    var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
-                int index = gr.products.IndexOf(product);
+                    var searchDescription = gr.products.FirstOrDefault(p => p.Description.ToLower() == description.ToLower());
 
-                gr.products[index].Description = description;
+                    if (searchDescription == null)
+                    {
+                        var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
-                _jsonGenerator.Serialize(_groups);
+                        int index = gr.products.IndexOf(product);
 
-                return _translator.ToDto(gr.products[index]);
+                        gr.products[index].Description = description;
+
+                        _jsonGenerator.Serialize(_groups);
+
+                        return _translator.ToDto(gr.products[index]);
+                    }
+                    else
+                        throw new Exception($"Produto '{searchDescription.Description}' já consta na lista.");
+                }
+                else
+                    throw new ArgumentNullException("Nome do produto não pode ser vazio.", innerException: null);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
             }
         }
 
         public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
         {
-            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+            try
+            {
+                var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
-            var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
+                var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
 
-            int index = gr.products.IndexOf(product);
+                int index = gr.products.IndexOf(product);
 
-            gr.products[index].IsChecked = isChecked;
+                gr.products[index].IsChecked = isChecked;
 
-            _jsonGenerator.Serialize(_groups);
+                _jsonGenerator.Serialize(_groups);
 
-            return _translator.ToDto(gr.products[index]);
+                return _translator.ToDto(gr.products[index]);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
         }
 
         public string Remove(string group, ProductDto productDto)
         {
-            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
-
-            var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
-
-            if (gr is not null && product is not null)
+            try
             {
+                var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+
+                var product = gr.products.FirstOrDefault(p => p.Description.ToLower() == productDto.Name.ToLower());
+
                 gr.products.Remove(product);
 
                 _jsonGenerator.Serialize(_groups);
 
                 return "Produto removido com sucesso.";
             }
-            else
+            catch(Exception ex)
             {
-                throw new Exception("Não foi possível remover o produto '" + product.Description + "'.");
+                throw new Exception($"Erro: {ex.Message}");
             }
         }
     }

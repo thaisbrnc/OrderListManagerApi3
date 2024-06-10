@@ -1,8 +1,8 @@
 ﻿using OrderListManagerApi3.Translate;
 using OrderListManagerApi3.Services;
+using OrderListManagerApi3.Infrastructure;
 using OrderListManagerApi3.Infrastructure.Repository;
 using Microsoft.AspNetCore.Mvc;
-using OrderListManagerApi3.Infrastructure;
 using System.Web.Http.Cors;
 
 namespace OrderListManagerApi3.Controllers
@@ -24,51 +24,111 @@ namespace OrderListManagerApi3.Controllers
         }
 
         [HttpPut(Name = "AdicionarGrupo")]
-        public GroupDto AddGroup(string name)
+        public ActionResult<GroupDto> AddGroup(string name)
         {
-            return _serviceGroup.Add(name);
+            try
+            {
+                var group = _serviceGroup.Add(name);
+
+                return Ok(group);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost(Name = "AdicionarProduto")]
-        public ProductDto AddProduct(string productName, string groupName)
+        public ActionResult<ProductDto> AddProduct(string productName, string groupName)
         {
-            return _serviceProduct.Add(productName, groupName);
+            try
+            {
+                var product = _serviceProduct.Add(productName, groupName);
+
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet(Name = "BuscarLista")]
-        public List<GroupDto> GetOrderList()
+        public ActionResult<List<GroupDto>> GetOrderList()
         {
-            return _serviceGroup.Get();
+            try
+            {
+                return Ok(_serviceGroup.Get());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch(Name = "AtualizarNomeGrupo")]
-        public GroupDto EditGroup(string group, string description)
+        public ActionResult<GroupDto> EditGroup(string group, string description)
         {
-            return _serviceGroup.Edit(group, description);
+            try
+            {
+                return Ok(_serviceGroup.Edit(group, description));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch(Name = "AtualizarNomeProduto")]
-        public ProductDto EditProduct(string group, ProductDto productDto, string description)
+        public ActionResult<ProductDto> EditProduct(string group, ProductDto productDto, string description)
         {
-            return _serviceProduct.Edit(group, productDto, description);
+            try
+            {
+                return Ok(_serviceProduct.Edit(group, productDto, description));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch(Name = "AtualizarSeleção")]
-        public ProductDto UpdateChecked(string group, ProductDto productDto, bool isChecked)
+        public ActionResult<ProductDto> UpdateChecked(string group, ProductDto productDto, bool isChecked)
         {
-            return _serviceProduct.UpdateChecked(group, productDto, isChecked);
+            try
+            {
+                return Ok(_serviceProduct.UpdateChecked(group, productDto, isChecked));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete(Name = "RemoverProduto")]
-        public string RemoveProduct(string group, ProductDto product)
+        public ActionResult<string> RemoveProduct(string group, ProductDto product)
         {
-            return _serviceProduct.Remove(group, product);
+            try
+            {
+                return Ok(_serviceProduct.Remove(group, product));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete(Name = "RemoverGrupo")]
-        public string RemoveGroup(GroupDto group)
+        public ActionResult<string> RemoveGroup(GroupDto group)
         {
-            return _serviceGroup.Remove(group);
+            try
+            {
+                return Ok(_serviceGroup.Remove(group));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

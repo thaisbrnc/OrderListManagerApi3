@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{366A2BBC-5C52-464A-BFFA-C2D23FDF3F36}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.OrderListManagerApi3 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/thaisbranco/Projects/OrderListManagerApi3/OrderListManagerApi3.Infrastructure.Tests/UnitTestProductRepository.cs" relfile="OrderListManagerApi3.Infrastructure.Tests/UnitTestProductRepository.cs" line="24" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.OrderListManagerApi3 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="OrderListManagerApi3.Infrastructure/Repository/GroupRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OrderListManagerApi3.Infrastructure.Tests/GroupRepositoryTests.cs">
     <Files>
-      <File FileName="OrderListManagerApi3.Infrastructure/Repository/ProductRepository.cs" />
-      <File FileName="OrderListManagerApi3.Service/ProductService.cs" />
-      <File FileName="OrderListManagerApi3.Infrastructure/Repository/GroupRepository.cs" Line="24" Column="71" />
+      <File FileName="OrderListManagerApi3.Infrastructure/Repository/GroupRepository.cs" Line="45" Column="14" />
+      <File FileName="OrderListManagerApi3.Infrastructure.Tests/GroupRepositoryTests.cs" Line="46" Column="18" />
+      <File FileName="OrderListManagerApi3.Infrastructure.Tests/ProductRepositoryTests.cs" Line="16" Column="70" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,20 +22,29 @@
               <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="OrderListManagerApi3.Infrastructure" expanded="True">
-              <Node name="Dependencies" expanded="True" />
               <Node name="Repository" expanded="True" />
             </Node>
-            <Node name="OrderListManagerApi3.Infrastructure.Tests" expanded="True" />
-            <Node name="OrderListManagerApi3.Services" expanded="True" />
+            <Node name="OrderListManagerApi3.Infrastructure.Tests">
+              <Node name="GroupRepositoryTests.cs" selected="True" />
+            </Node>
+            <Node name="OrderListManagerApi3.Translate" expanded="True" />
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="OrderListManagerApi3" selected="True" />
+          <Node name="OrderListManagerApi3">
+            <Node name="OrderListManagerApi3.Infrastructure.Tests" expanded="True">
+              <Node name="OrderListManagerApi3.Infrastructure.Tests" expanded="True">
+                <Node name="GroupRepositoryTests" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

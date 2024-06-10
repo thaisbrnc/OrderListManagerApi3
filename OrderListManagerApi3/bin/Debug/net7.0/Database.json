@@ -2,11 +2,11 @@
   {
     "products": [
       {
-        "IsChecked": false,
+        "IsChecked": true,
         "Description": "Sabonete"
       },
       {
-        "IsChecked": true,
+        "IsChecked": false,
         "Description": "Shampoo"
       },
       {
@@ -19,14 +19,44 @@
   {
     "products": [
       {
+        "IsChecked": true,
+        "Description": "Sab\u00E3o"
+      }
+    ],
+    "Description": "Limpeza"
+  },
+  {
+    "products": [
+      {
         "IsChecked": false,
-        "Description": "Bovina"
+        "Description": "Banana"
+      },
+      {
+        "IsChecked": true,
+        "Description": "Morangos"
+      },
+      {
+        "IsChecked": false,
+        "Description": "Uvas"
+      }
+    ],
+    "Description": "Frutas"
+  },
+  {
+    "products": [
+      {
+        "IsChecked": false,
+        "Description": "Frango"
       },
       {
         "IsChecked": true,
         "Description": "Peixe"
+      },
+      {
+        "IsChecked": false,
+        "Description": "Atum"
       }
     ],
-    "Description": "Carnes"
+    "Description": "Carne"
   }
 ]

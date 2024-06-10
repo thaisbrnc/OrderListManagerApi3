@@ -1,4 +1,5 @@
-﻿using OrderListManagerApi3.Models;
+﻿using System.Xml.Linq;
+using OrderListManagerApi3.Models;
 using OrderListManagerApi3.Translate;
 
 namespace OrderListManagerApi3.Infrastructure.Repository
@@ -16,93 +17,127 @@ namespace OrderListManagerApi3.Infrastructure.Repository
             _groups = _jsonGenerator.Deserialize();
         }
 
-		public GroupDto Add(string name)
-		{
-            var gr = _groups.FirstOrDefault(p => p.Description.ToLower() == name.ToLower());
-
-            if (gr is not null)
-                throw new Exception("Grupo '" + gr.Description + "' já consta na lista.");
-            else
+        public GroupDto Add(string name)
+        {
+            try
             {
-                var group = new GroupDto()
+                if (!string.IsNullOrEmpty(name))
                 {
-                    Description = name,
-                    Products = new List<ProductDto>()
-                };
+                    var gr = _groups.FirstOrDefault(p => p.Description?.ToLower() == name.ToLower());
 
-                _groups.Add(_translator.ToEntity(group));
-                _jsonGenerator.Serialize(_groups);
+                    if (gr == null)
+                    {
+                        var group = new GroupDto()
+                        {
+                            Description = name,
+                            Products = new List<ProductDto>()
+                        };
 
-                return group;
+                        _groups.Add(_translator.ToEntity(group));
+                        _jsonGenerator.Serialize(_groups);
+
+                        return group;
+                    }
+                    else
+                    {
+                        throw new Exception($"Grupo '{gr.Description}' já consta na lista.");
+                    }
+                }
+                else
+                    throw new ArgumentNullException("Nome do grupo não pode ser vazio.", innerException: null);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
             }
         }
 
         public GroupDto Edit(string group, string description)
         {
-            //_jsonGenerator.Deserialize();
-
-            var searchDescription = _groups.FirstOrDefault(g => g.Description.ToLower() == description.ToLower());
-
-            if (searchDescription is not null)
-                throw new Exception("Grupo '" + searchDescription + "' já consta na lista.");
-            else
+            try
             {
-                var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
+                if (!string.IsNullOrEmpty(description))
+                {
+                    var searchDescription = _groups.FirstOrDefault(g => g.Description.ToLower() == description.ToLower());
 
-                int index = _groups.IndexOf(gr);
+                    if (searchDescription == null)
+                    {
+                        var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == group.ToLower());
 
-                _groups[index].Description = description;
+                        int index = _groups.IndexOf(gr);
 
-                _jsonGenerator.Serialize(_groups);
+                        _groups[index].Description = description;
 
-                return _translator.ToDto(_groups[index]);
+                        _jsonGenerator.Serialize(_groups);
+
+                        return _translator.ToDto(_groups[index]);
+                    }  
+                    else
+                        throw new Exception($"Grupo '{searchDescription.Description}' já consta na lista.");
+                }
+                else
+                    throw new ArgumentNullException("Nome do grupo não pode ser vazio.", innerException: null);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
             }
         }
 
         public string Remove(GroupDto groupDto)
         {
-            //_jsonGenerator.Deserialize();
-
-            var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == groupDto.Description.ToLower());
-
-            if (gr is not null)
+            try
             {
+                var gr = _groups.FirstOrDefault(g => g.Description.ToLower() == groupDto.Description.ToLower());
+
                 _groups.Remove(gr);
 
                 _jsonGenerator.Serialize(_groups);
 
                 return "Grupo removido com sucesso.";
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception("Não foi possível remover o grupo '" + gr.Description + "'.");
+                throw new Exception($"Erro: Não foi possível remover o grupo.\n\r{ex.Message}");
             }
         }
 
         public List<GroupDto> Get()
         {
-            var groupsDto = new List<GroupDto>();
-
-            foreach (Group g in _groups)
+            try
             {
-                groupsDto.Add(_translator.ToDto(g));
-            }
+                var groupsDto = new List<GroupDto>();
 
-            return groupsDto;
+                foreach (Group g in _groups)
+                {
+                    groupsDto.Add(_translator.ToDto(g));
+                }
+
+                return groupsDto;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
         }
 
         public GroupDto GetByDescription(string description)
         {
-            if (string.IsNullOrEmpty(description))
+            try
             {
-                throw new Exception();
+                if (!string.IsNullOrEmpty(description))
+                {
+                    var groupDto = _translator.ToDto(_groups.FirstOrDefault(g => g.Description.ToLower() == description.ToLower()));
+
+                    return groupDto;
+                }
+                else
+                    throw new ArgumentNullException("Nome do grupo não pode ser vazio.", innerException: null);
             }
-
-            //_jsonGenerator.Deserialize();
-
-            var groupDto = _translator.ToDto(_groups.FirstOrDefault(g => g.Description.ToLower() == description.ToLower()));
-
-            return groupDto;
+            catch(Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
         }
     }
 }

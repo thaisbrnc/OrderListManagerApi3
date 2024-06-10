@@ -9,14 +9,12 @@ public class GroupDto : ITranslator<Group, GroupDto>
 
     public GroupDto()
     {
-        Products = new List<ProductDto>();
+        Products = new();
     }
 
     public GroupDto ToDto(Group group)
     {
-        GroupDto _groupDto = null;
-
-        if (group is not null)
+        try
         {
             var list = new List<ProductDto>();
             var translator = new ProductDto();
@@ -26,21 +24,23 @@ public class GroupDto : ITranslator<Group, GroupDto>
                 list.Add(translator.ToDto(p));
             }
 
-            _groupDto = new GroupDto
+            var groupDto = new GroupDto
             {
                 Description = group.Description,
                 Products = list
             };
-        }
 
-        return _groupDto;
+            return groupDto;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Erro: {ex.Message}");
+        }
     }
 
     public Group ToEntity(GroupDto groupDto)
     {
-        Group _group = null;
-
-        if (groupDto is not null)
+        try
         {
             var list = new List<Product>();
             var translator = new ProductDto();
@@ -50,13 +50,17 @@ public class GroupDto : ITranslator<Group, GroupDto>
                 list.Add(translator.ToEntity(p));
             }
 
-            _group = new Group
+            var group = new Group
             {
                 Description = groupDto.Description,
                 products = list
             };
-        }
 
-        return _group;
+            return group;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Erro: {ex.Message}");
+        }
     }
 }

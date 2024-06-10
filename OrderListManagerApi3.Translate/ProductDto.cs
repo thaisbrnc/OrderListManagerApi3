@@ -9,34 +9,38 @@ namespace OrderListManagerApi3.Translate
 
         public ProductDto ToDto(Product product)
         {
-            ProductDto _productDto = null;
-
-            if (product is not null)
+            try
             {
-                _productDto = new ProductDto
+                var productDto = new ProductDto
                 {
                     Name = product.Description,
                     IsChecked = product.IsChecked
                 };
-            }
 
-            return _productDto;
+                return productDto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
         }
 
         public Product ToEntity(ProductDto productDto)
         {
-            Product _product = null;
-
-            if (productDto is not null)
+            try
             {
-                _product = new Product
+                var product = new Product
                 {
                     Description = productDto.Name,
                     IsChecked = productDto.IsChecked
                 };
-            }
 
-            return _product;
+                return product;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro: {ex.Message}");
+            }
         }
     }
 }
